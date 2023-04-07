@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p This is webapps Laboratory 10.
+  button(type="button", class="btn btn-primary", onclick = "doReduce()") Press Me
+  br
+  div#reduce Reduce the value
+
+  script.  
+    var count = 20
+    var change = -1
+    function doReduce() {
+      count += change;
+      change--;
+       document.getElementById("reduce").innerHTML = "Count " + count + " with change " + change;
+     }
+  a(href="Shoe") Search Results
+  
