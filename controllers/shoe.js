@@ -74,6 +74,7 @@ ${JSON.stringify(req.body)}`)
         res.send(`{"error": ${err}: Update for id ${req.params.id} 
 failed`);
     }
+};
 // VIEWS
 // Handle a show all view
 exports.shoe_view_all_Page = async function(req, res) {
