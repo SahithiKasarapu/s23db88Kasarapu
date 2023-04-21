@@ -2,20 +2,19 @@ extends layout
 
 block content
   h1= title
-
-  -const results = [{ brand: "Puma", color: "White", price: 3500 },{ brand: "Adidas", color: "Red", price: 4000 },{ brand: "Nike",  color: "Blue", price: 2000 }]
-
+  - let items = results;
   div(class="container-fluid")
-  div(class="row")
-    each item,index in results
-      div(class="col-sm-2" onclick=`buy(${index})`)
-        p Brand: #{item.brand}
-        p Color: #{item.color}
-        p Price: $#{item.price}
-
+    div(class="row")
+      each item,index in items
+        - let destination = `dispatch(\"/shoe/update?id=${item._id}\")`
+        div(class="col-sm-2" class="m-1")
+          h3 #{item.brand}
+          p #{item.color}
+          p #{item.price}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-    function buy(index)
-    {
-      alert(`You purchased Item ${index+1}`)
+    function dispatch(path){
+      console.log(path);
+      window.location.href=path;
     }
   
